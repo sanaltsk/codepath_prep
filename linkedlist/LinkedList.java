@@ -35,16 +35,20 @@ public class LinkedList {
         }
     }
 
-    static boolean hasCycle() {
-        if(head==null) return false;
+    static Node hasCycle() {
+        if(head==null) return null;
         Node fast = head;
         Node slow = head;
         while(fast!=null && slow!=null) {
-            if(fast==slow) return true;
             fast = fast.next.next;
             slow = slow.next;
+            if(fast==slow) {
+                return fast;
+            }
         }
-        return false;
+        return null;
+
+
     }
 
     static void print(Node head) {
@@ -100,22 +104,24 @@ public class LinkedList {
     }
 
 
+
     public static void main(String[] args) {
         append(10);
-        append(10);
-
         append(20);
         append(30);
-        append(30);
+        append(40);
         append(50);
+        append(60);
         append(70);
-        append(70);
+        append(80);
         print(head);
 //        head = reverse(head);
 //        print(head);
-        System.out.println("Is list palindrome :" + isPalindrome(head));
-        removeDuplicates(head);
-        print(head);
+//        System.out.println("Is list palindrome :" + isPalindrome(head));
+//        removeDuplicates(head);
+//        print(head);
+//        head.next.next.next.next = head.next.next;
+//        System.out.println(hasCycle().value);
     }
 }
 
